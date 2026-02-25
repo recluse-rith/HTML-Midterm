@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: blue;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        form {
+            max-width: 800px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"],
+         input[type="password"],
+          select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: greenyellow; 
+            color: white;
+            border-radius: 5px;
+
+        }
+
+
+        #strengthTeller {
+            margin-top: 15px; 
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            display: none;
+        }
+
+        #strengthTeller.weak {
+            background-color: red;
+            color: white;
+            display: block;
+        }
+
+        #strengthTeller.medium {
+            background-color: yellow;
+            color: black;
+            display: block;
+        }
+
+        #strengthTeller.strong {
+            background-color: green;
+            color: white;
+            display: block;
+        }
+    </style>     
+    <title>CIS</title>
+</head>
+<body>
+    <header></header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Information.html">Information</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <form action="" onsubmit="return validateForm()">
+        <label for="roles">Role:</label>
+        <select id="roles" name="roles" onchange="saveRole()">
+            <option value="anonymous">Anonymous</option>
+            <option value="nurse">Nurse</option>
+            <option value="Admin">Admin</option>
+        </select>
+
+        <label for="ID">Name:</label>
+        <input type="text" id="ID" name="ID" onchange="saveName()" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" oninput="checkpw()" required>
+        <div id="strengthTeller"></div>
+        <label for="showPassword"><input type="checkbox" id="showPassword" onclick="toggleVis()"> Show Password</label>
+
+        <button type="submit">Login To Page</button>
+
+        <script>
+            function setCookie(name, value, days = 7) {
+                const date = new Date();
+            }
+
+            function saveRole() {
+            const role = document.getElementById("roles").value;
+                setCookie("active_role", role);
+            }
+
+            function saveName() {
+                const name = document.getElementById("ID").value;
+                setCookie("active_user", name);
+            }
+
+            function toggleVis() {
+             var passwordInput = document.getElementById("password");
+                passwordInput.type = passwordInput.type === "password" ? "text" : "password";
+            }
+
+            function checkpw() {
+                var password = document.getElementById("password").value;
+                var strength = 0;
+                var indicator = document.getElementById("strengthTeller");
+
+                
+                if (password.length >= 8) strength += 1;
+                if (password.match(/[0-9]/)) strength += 1;
+                if (password.match(/[!@#$%^&*]/)) strength += 1;
+
+                if (strength <= 1) {
+                    indicator.className = "weak";
+                    indicator.textContent = "Weak";
+
+                } else if (strength === 2) {
+                    indicator.className = "medium";
+                    indicator.textContent = "Medium";
+
+                } else {
+                    indicator.className = "strong";
+                    indicator.textContent = "Strong";
+                }
+            }
+
+            function validateForm() {
+                saveRole();
+                saveName();
+                return true;
+            }
+
+
+        </script>
+    </form>
+
+    <footer>CIS</footer>
+</body>
+</html>
