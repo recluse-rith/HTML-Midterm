@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nurse Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        
+        .cards-container {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <h1>Nurse Dashboard</h1>
+        
+        <div class="cards-container">
+
+            <div class="card">
+
+                <div class="card-title">Patients</div>
+                <div class="card-value">25</div>
+                <div class="card-subtitle">Active patients</div>
+            </div>
+            
+    
+            <div class="card">
+                <div class="card-title">Alerts</div>
+                <div class="card-value">3</div>
+                <div class="card-subtitle">Critical alerts</div>
+            
+            </div>
+            
+            <div class="card">
+                <div class="card-title">Bed Availability</div>
+                <div class="card-value">5</div>
+                <div class="card-subtitle">Beds available</div>
+            </div>
+            
+    
+            <div class="card">
+                <div class="card-title">Medicine Orders</div>
+                <div class="card-value">15</div>
+                <div class="card-subtitle">Pending orders</div>
+            </div>
+            
+
+            <div class="card">
+                <div class="card-title">Database Status</div>
+                <lass="card-value">✓ Online</div>
+                <div class="card-subtitle">All systems in oparation</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
